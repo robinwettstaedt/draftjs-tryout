@@ -1,6 +1,8 @@
 import React from 'react';
 import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
+import { grey } from 'jest-matcher-utils/node_modules/chalk';
+import { blueviolet } from 'color-name';
 
 function App() {
   const [editorState, setEditorState] = React.useState(() =>
@@ -58,12 +60,25 @@ function App() {
   };
 
   return (
-    <>
-      <h1>HI!</h1>
-      <Editor editorState={editorState} onChange={setEditorState} />
-      <button onClick={handleGet}>Get</button>
-      <button onClick={handlePost}>Post</button>
-    </>
+    <div className="bg-gray-50">
+      <Editor
+        blockStyleFn={() => 'super'}
+        editorState={editorState}
+        onChange={setEditorState}
+      />
+      <button
+        className="px-4 py-2 m-2 bg-gray-500 text-gray-50 border rounded"
+        onClick={handleGet}
+      >
+        Get
+      </button>
+      <button
+        className="px-4 py-2 m-2 bg-gray-500 text-gray-50 border rounded-md"
+        onClick={handlePost}
+      >
+        Post
+      </button>
+    </div>
   );
 }
 
